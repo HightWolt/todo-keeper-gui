@@ -1,0 +1,18 @@
+name: Тесты Хранителя
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout кода
+        uses: actions/checkout@v4
+
+      - name: 🐍 Установка Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: 🧪 Запуск тестов
+        run: python -m unittest test_storage.py -v
